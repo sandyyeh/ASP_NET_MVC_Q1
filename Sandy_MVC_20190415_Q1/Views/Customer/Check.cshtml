@@ -1,0 +1,43 @@
+﻿@model Sandy_MVC_20190415_Q1.Models.CustomerModel
+
+@{
+    ViewBag.Title = "Check";
+}
+
+<h2>Check</h2>
+@using (Html.BeginForm("Check", "Customer", new { name = @TempData["Name"] ,phone = @TempData["Phone"] ,email = @TempData["Email"] }, FormMethod.Post))
+{@Html.AntiForgeryToken()
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @TempData["Name"]
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+
+        <dd>
+            @TempData["Phone"]
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @TempData["Email"]
+        </dd>
+
+    </dl>
+</div>
+<input type="submit" value="save" name="btnSave" />
+@*<input onclick="location.href='@Url.Action("Save", "Data")'" type="button" value="save" name="btnSave" />*@
+
+
+}

@@ -1,0 +1,36 @@
+﻿@model Sandy_MVC_20190415_Q1.Models.CustomerModel
+@{
+    ViewBag.Title = "Detail";
+}
+
+<h2></h2>
+@using (Html.BeginForm("Detail", "Customer", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+<div>
+    <label>
+        使用者名稱:
+    </label>
+    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+</div>
+<div>
+    <label>
+        手機號碼:
+    </label>
+    @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+
+</div>
+<div>
+    <label>
+        電子信箱:
+    </label>
+    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+</div>
+
+<input type="submit" />
+
+
+}
