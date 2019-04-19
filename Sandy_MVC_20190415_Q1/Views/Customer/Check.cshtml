@@ -5,39 +5,28 @@
 }
 
 <h2>Check</h2>
-@using (Html.BeginForm("Check", "Customer", new { name = @TempData["Name"] ,phone = @TempData["Phone"] ,email = @TempData["Email"] }, FormMethod.Post))
+@*@using (Html.BeginForm("Save", "Data",  FormMethod.Post))
 {@Html.AntiForgeryToken()
 <div>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @TempData["Name"]
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Phone)
-        </dt>
-
-        <dd>
-            @TempData["Phone"]
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-
-        <dd>
-            @TempData["Email"]
-        </dd>
-
+        <p>
+            Name:@Model.Name
+        </p>
+        <p>
+            Phone: @Model.Phone
+        </p>
+        <p>
+           Email: @Model.Email
+        </p>
     </dl>
-</div>
-<input type="submit" value="save" name="btnSave" />
+</div>*@
 @*<input onclick="location.href='@Url.Action("Save", "Data")'" type="button" value="save" name="btnSave" />*@
+@*}*@
 
-
-}
+<form method="post" action="/Data/Save">
+    Name:<input type="hidden" name="name" value="@Model.Name">@Model.Name<br />
+    Phone:<input type="hidden" name="phone" value="@Model.Phone">@Model.Phone<br />
+    Email:<input type="hidden" name="email" value="@Model.Email">@Model.Email<br />
+   <input type="submit" value="save" name="btnSave" />
+</form>

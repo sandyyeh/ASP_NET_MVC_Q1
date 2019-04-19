@@ -24,19 +24,8 @@ namespace Sandy_MVC_20190415_Q1.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Detail(string name,string phone,string email,CustomerModel model)
         {
-        
-                if (ModelState.IsValid)
-                {
-                    TempData["Name"] = name;
-                    TempData["Phone"] = phone;
-                    TempData["Email"] = email;
-                    return RedirectToAction("Check", new { Name = name, Phone = phone, Email = email });
-                }
-          
-                return View();
-         
             
-                      
+            return View();
         }
 
         public ActionResult Check()
@@ -47,7 +36,11 @@ namespace Sandy_MVC_20190415_Q1.Controllers
         [HttpPost]
         public ActionResult Check(string name, string phone, string email)
         {
-            return RedirectToAction("Save","Data", new { Name = name, Phone = phone, Email = email });
+            CustomerModel model = new CustomerModel();
+            model.Name = name;
+            model.Phone = phone;
+            model.Email = email;
+            return View(model);
         }
     }
 }
