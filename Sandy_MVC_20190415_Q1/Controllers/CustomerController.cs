@@ -24,7 +24,7 @@ namespace Sandy_MVC_20190415_Q1.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Detail(string name,string phone,string email,CustomerModel model)
         {
-            
+           
             return View();
         }
 

@@ -2,8 +2,56 @@
 @{
     ViewBag.Title = "Detail";
 }
+<body>
 
-<h2></h2>
+    <div class="cellphone_error"></div>
+    <form method="post" action="/Customer/Check">
+        <h2></h2>
+        使用者名稱:<input type="text" name="name" required /><br />
+        @*手機號碼:<input type="text" name="phone" id="phone" required  /><span class="error1"></span><br />*@
+        @*手機號碼:<input type="text" name="phone" id="phone" onblur="checkPhone(this.value);" required /><span class="error1"></span><br />*@
+
+        手機號碼:<input type="text" name="phone" id="phone" pattern='09\d{2}\d{6}' required /><br />
+        電子信箱:<input type="email" name="email" required /><br />
+        <h2></h2>
+        <input type="submit" value="check" />
+    </form>
+</body>
+@*<head>*@
+    @*<input type="text" pattern="">*@
+    @*<script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.js"></script>
+    <script type="text/javascript">*@
+        @*//$("#phone").blur(function () {
+        //    var rule = /^09[0-9]{8}$/;
+        //    if (rule.test($(this).val())) {
+        //        $('.error1').text('')
+        //        $(this).css("border-color", "green")
+        //        return true;
+        //    } else {
+        //        $('.error1').text('不符合規則')
+        //        $(this).css("border-color", "red")
+        //        return false;
+
+        //    }
+        //})
+
+        function checkPhone(StrPhone) {
+            var cellphone = /^09[0-9]{8}$/;
+
+            if (cellphone.test(StrPhone)) {
+                //  alert("正確");
+                return true;
+
+            }
+            else {
+                //alert("錯誤");
+                return false;
+
+            }
+        };
+    </script>
+</head>*@
 @*@using (Html.BeginForm("Check", "Customer", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
@@ -20,13 +68,6 @@
             電子信箱: @Html.TextBox("Email")
         </p>
     </div>
-        <input type="submit" />    
+        <input type="submit" />
         }*@
-<div class="cellphone_error"></div>
-<form method="post" action="/Customer/Check">
-    使用者名稱:<input type="text" name="name" required /><br />
-    手機號碼:<input type="text" name="phone" required /><br />
-    電子信箱:<input type="email" name="email" required /><br />
-    <input type="submit" value="check" />
-  
-</form>
+
