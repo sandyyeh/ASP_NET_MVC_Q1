@@ -22,7 +22,7 @@ namespace Sandy_MVC_20190415_Q1.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Detail(string name,string phone,string email,CustomerModel model)
+        public ActionResult Detail(CustomerModel model)
         {
            
             return View();
@@ -34,13 +34,18 @@ namespace Sandy_MVC_20190415_Q1.Controllers
         }
 
         [HttpPost]
-        public ActionResult Check(string name, string phone, string email)
+        public ActionResult Check(CustomerModel customer)
         {
+
             CustomerModel model = new CustomerModel();
-            model.Name = name;
-            model.Phone = phone;
-            model.Email = email;
-            return View(model);
+            if (ModelState.IsValid)
+            {
+                model.Name = customer.Name;
+                model.Phone = customer.Phone;
+                model.Email = customer.Email;
+                return View(model);
+            }            
+            return View("Detail");
         }
     }
 }
