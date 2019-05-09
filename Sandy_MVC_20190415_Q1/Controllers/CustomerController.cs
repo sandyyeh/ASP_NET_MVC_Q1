@@ -30,7 +30,11 @@ namespace Sandy_MVC_20190415_Q1.Controllers
 
         public ActionResult Check()
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                return View();
+            }
+            return Content("<script >alert('xxx');</script >");
         }
 
         [HttpPost]

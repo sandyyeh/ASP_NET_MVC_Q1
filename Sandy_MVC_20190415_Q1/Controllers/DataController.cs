@@ -32,17 +32,23 @@ namespace Sandy_MVC_20190415_Q1.Controllers
                     {                        
                         continue;                       
                     }
-
-                    using (StreamWriter outputFile = new StreamWriter(Server.MapPath(@"~/App_Data/WriteLines" + i + ".txt")))
+                    if (ModelState.IsValid)
                     {
-                        outputFile.WriteLine("Name:" +name);
-                        outputFile.WriteLine("Phone:" + phone);
-                        outputFile.WriteLine("Email:" + email);
-                        outputFile.WriteLine("----------------");
+                        using (StreamWriter outputFile = new StreamWriter(Server.MapPath(@"~/App_Data/WriteLines" + i + ".txt")))
+                        {
+                            outputFile.WriteLine("Name:" + name);
+                            outputFile.WriteLine("Phone:" + phone);
+                            outputFile.WriteLine("Email:" + email);
+                            outputFile.WriteLine("----------------");
+                        }
+                        string str = "WriteLines" + i + ".txt";
+                        ViewBag.Str = str;
+                        break;
                     }
-                    string str = "WriteLines"+i+".txt";
-                    ViewBag.Str = str;
-                    break;                  
+                    else
+                    {
+                        return Content("<script >alert('xxx');</script >", "text/html");
+                    }
                 }
             }
 
